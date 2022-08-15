@@ -1,5 +1,9 @@
-import 'package:bankak_app/consts.dart';
+import 'package:bankak_app/shared/components/shared_widgets.dart';
+import 'package:bankak_app/shared/resources/images.dart';
+import 'package:bankak_app/shared/resources/styles.dart';
 import 'package:flutter/material.dart';
+
+import '../shared/resources/colors.dart';
 
 class Transfer extends StatelessWidget {
   const Transfer({Key? key}) : super(key: key);
@@ -17,11 +21,12 @@ class Transfer extends StatelessWidget {
           children: [
             Column(
               children: [
+                //top design
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Image.asset(
-                        'assets/images/dolar.png',
+                        img3,
                         height: 120,
                       ),
                       Column(
@@ -149,22 +154,40 @@ class Transfer extends StatelessWidget {
                           ),
                         ],
                       ),
-                      freeV(h: 40),
+                      freeV(h: 60),
                       SizedBox(
-                        // margin: const EdgeInsets.all(20),
-                        child: GridView(
-                          shrinkWrap: true,
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          gridDelegate:
-                              const SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent: 150,
-                                  crossAxisSpacing: 8,
-                                  mainAxisSpacing: 8,
-                                  childAspectRatio: 1.5),
-                          children: [
-                            for (int i = 0; i < items.length; i++)
-                              numberkeyboardButtons(items[i]),
-                          ],
+                        //to control design of gridview in case of rotating phone
+                        child: OrientationBuilder(
+                          builder: (context, orientation) => Padding(
+                            padding: orientation == Orientation.landscape
+                                ? const EdgeInsets.symmetric(horizontal: 80)
+                                : const EdgeInsets.all(0),
+                            child: GridView.count(
+                              shrinkWrap: true,
+                              crossAxisCount:
+                                  orientation == Orientation.portrait ? 3 : 3,
+                              crossAxisSpacing: 8,
+                              mainAxisSpacing: 8,
+                              childAspectRatio:
+                                  orientation == Orientation.portrait
+                                      ? 1.8
+                                      : 0.3,
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              /* gridDelegate:
+                                  SliverGridDelegateWithMaxCrossAxisExtent(
+                                      maxCrossAxisExtent:
+                                          orientation == Orientation.portrait
+                                              ? 150
+                                              : 500,
+                                      crossAxisSpacing: 8,
+                                      mainAxisSpacing: 8,
+                                      childAspectRatio: 1.5), */
+                              children: [
+                                for (int i = 0; i < items.length; i++)
+                                  numberkeyboardButtons(items[i]),
+                              ],
+                            ),
+                          ),
                         ),
                       )
                     ],
@@ -182,16 +205,10 @@ class Transfer extends StatelessWidget {
 List items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'del', 0, '.'];
 Widget numberkeyboardButtons(index) {
   return Container(
-    height: 40,
-    width: 20,
-    decoration:
-        BoxDecoration(gradient: grad, borderRadius: BorderRadius.circular(10)),
+    decoration: BoxDecoration(
+        gradient: appGradient, borderRadius: BorderRadius.circular(5)),
     child: Center(
-      child: Text(
-        '$index',
-        style: const TextStyle(
-            color: white, fontWeight: FontWeight.bold, fontSize: 22),
-      ),
+      child: Text('$index', style: getmedium(color: white.withOpacity(.95))),
     ),
   );
 }

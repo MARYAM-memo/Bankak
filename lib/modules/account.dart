@@ -1,5 +1,10 @@
-import 'package:bankak_app/consts.dart';
+import 'package:bankak_app/shared/components/form_fields/text_field.dart';
+import 'package:bankak_app/shared/components/shared_widgets.dart';
+import 'package:bankak_app/shared/resources/colors.dart';
+import 'package:bankak_app/shared/resources/images.dart';
 import 'package:flutter/material.dart';
+
+import '../shared/resources/styles.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -7,19 +12,18 @@ class AccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBars(context,'Account'),
+      appBar: appBars(context, 'Account'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Stack(
                 alignment: Alignment.bottomRight,
                 children: [
                   Image.asset(
-                    'assets/images/p2.png',
+                    img5,
                     height: 120,
                   ),
                   const Positioned(
@@ -37,46 +41,55 @@ class AccountPage extends StatelessWidget {
                 ],
               ),
               freeV(h: 10),
-              SizedBox(
+              Container(
+                alignment: Alignment.center,
                 child: Column(
                   children: [
                     accountFields(
                         title: 'Your Full Name',
                         keyboard: TextInputType.name,
-                        lines: 1,
                         hint: 'Karina Ebus'),
                     accountFields(
                         title: 'Bank Account',
-                        lines: 1,
                         keyboard: TextInputType.number,
                         hint: '00 123 456'),
                     accountFields(
                         title: 'Your Email',
-                        lines: 1,
                         keyboard: TextInputType.emailAddress,
                         hint: 'karina_ebus@gmail.com'),
                     accountFields(
                         title: 'Password',
-                        lines: 1,
                         keyboard: TextInputType.visiblePassword,
                         hint: '***********'),
                     accountFields(
                         title: 'Phone Number',
-                        lines: 1,
                         keyboard: TextInputType.number,
                         hint: '+44 556 245 43 003'),
-                    accountFields(
-                        title: 'Address',
-                        lines: 3,
-                        keyboard: TextInputType.text,
-                        hint: '''Lorem ipsum 22nd street,
-tincidunt ut laoreet
-5N 27T-Lorem ipsum'''),
+                    SizedBox(
+                      width: 400,
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                'Address',
+                                style: getmedium(color: gry.withOpacity(.92)),
+                              ),
+                            ],
+                          ),
+                          const InputTextField(
+                            hint:
+                                '''Lorem ipsum 22nd street, tincidunt ut laoreet 5N 27T-Lorem ipsum''',
+                            lines: 4,
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
               freeV(),
-              button(() {}, 'Edit'),
+              defaultButton(txtButton: 'Edit'),
               freeV(),
             ],
           ),
