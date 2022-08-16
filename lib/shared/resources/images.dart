@@ -8,3 +8,5 @@ String img7 = 'assets/images/uoro.png';
 String img8 = 'assets/images/MONEY.png';
 String img9 = 'assets/images/ARROWS.png';
 String img10 = 'assets/images/card.png';
+String img11 = 'assets/images/pin.png';
+String img12 = 'assets/images/QR-code.png';

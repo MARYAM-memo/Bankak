@@ -223,7 +223,6 @@ class _TransferState extends State<Transfer> {
   }
 }
 
-List items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'del', 0, '.'];
 Widget numberkeyboardButtons(index) {
   return Container(
     decoration: BoxDecoration(

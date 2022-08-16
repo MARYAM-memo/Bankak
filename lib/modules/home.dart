@@ -1,3 +1,4 @@
+import 'package:bankak_app/modules/transactions.dart';
 import 'package:bankak_app/shared/components/consts.dart';
 import 'package:bankak_app/shared/components/shared_widgets.dart';
 import 'package:bankak_app/shared/resources/colors.dart';
@@ -153,23 +154,30 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   freeV(h: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Text(
-                        'show more',
-                        style: TextStyle(
-                          color: blue1,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) {
+                        return const Transactons();
+                      }));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Text(
+                          'show more',
+                          style: TextStyle(
+                            color: blue1,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                      const Icon(
-                        Icons.keyboard_double_arrow_right_rounded,
-                        color: blue1,
-                      ),
-                      freeH()
-                    ],
+                        const Icon(
+                          Icons.keyboard_double_arrow_right_rounded,
+                          color: blue1,
+                        ),
+                        freeH()
+                      ],
+                    ),
                   ),
                   freeV(),
                 ],

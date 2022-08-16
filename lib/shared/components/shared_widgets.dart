@@ -129,10 +129,10 @@ Widget accountFields(
   );
 }
 
-AppBar appBars(context, txt) {
+AppBar appBars(context, txt, {color = blue3}) {
   return AppBar(
     elevation: 0,
-    backgroundColor: blue3,
+    backgroundColor: color,
     leading: IconButton(
       onPressed: () {
         Navigator.pop(context);
@@ -177,7 +177,8 @@ class SettingsIcon extends StatelessWidget {
           }
           if (value == 2) {
             navigatorPush(context: context, neededPage: const AddTransacton());
-          } else {
+          }
+          if (value == 3) {
             navigatorPush(context: context, neededPage: const AddCard());
           }
         },
@@ -229,4 +230,62 @@ class ItemsInPopUp extends StatelessWidget {
                 )))
             .toList());
   }
+}
+
+Widget paymentItems(
+    {required String title, required Color color, required IconData icon}) {
+  return Column(
+    children: [
+      Container(
+        height: 80,
+        width: 80,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: LinearGradient(
+              colors: [color, color.withOpacity(.7)],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter),
+        ),
+        child: Center(
+            child: Icon(
+          icon,
+          color: white,
+          size: 36,
+        )),
+      ),
+      freeV(h: 5),
+      Text(
+        title,
+        style: getmedium(color: gry.withOpacity(.88)),
+      )
+    ],
+  );
+}
+Widget transactionsHeader(color, txt) {
+  return Container(
+    height: 60,
+    width: 170,
+    decoration: BoxDecoration(
+        gradient: LinearGradient(
+            colors: [color, color.withOpacity(.7)],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter),
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(30), topRight: Radius.circular(30))),
+    child: Center(
+      child: Text(
+        txt,
+        style: getmedium(color: white, size: 20)
+            .copyWith(textBaseline: TextBaseline.alphabetic),
+      ),
+    ),
+  );
+}
+
+Widget activeTransactionHeader(txt) {
+  return transactionsHeader(blue1, txt);
+}
+
+Widget nonActiveTransactionHeader(txt) {
+  return transactionsHeader(gry.withOpacity(.5), txt);
 }
