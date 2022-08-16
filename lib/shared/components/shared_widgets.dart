@@ -1,8 +1,14 @@
-import 'package:bankak_app/shared/components/consts.dart';
+import 'package:bankak_app/modules/add_card.dart';
 import 'package:bankak_app/shared/components/form_fields/text_field.dart';
+import 'package:bankak_app/shared/components/shared_functions.dart';
 import 'package:bankak_app/shared/resources/colors.dart';
 import 'package:bankak_app/shared/resources/styles.dart';
 import 'package:flutter/material.dart';
+import '../../modules/add_transaction.dart';
+import '../../modules/payment.dart';
+import '../../modules/qr_code.dart';
+import '../../modules/transfere.dart';
+import 'consts.dart';
 
 LinearGradient appGradient = const LinearGradient(
   colors: [
@@ -83,7 +89,16 @@ Widget defaultButton({
   );
 }
 
-Widget accountFields({title, keyboard, hint, lines = 1}) {
+Widget accountFields(
+    {title,
+    keyboard,
+    hint,
+    lines = 1,
+    readOnly = true,
+    secure = false,
+    Widget? suffix,
+    TextStyle? style,
+    String? label}) {
   return SizedBox(
     width: 400,
     child: Column(
@@ -97,7 +112,11 @@ Widget accountFields({title, keyboard, hint, lines = 1}) {
         SizedBox(
           height: 48,
           child: InputTextField(
-            readOnly: true,
+            label: label,
+            style: style,
+            suffix: suffix,
+            readOnly: readOnly,
+            secure: secure,
             lines: lines,
             keyboardType: keyboard,
             hint: hint,
@@ -130,8 +149,84 @@ AppBar appBars(context, txt) {
       style: getmedium(color: white.withOpacity(.95)),
     ),
     actions: [
-      settings,
+      const SettingsIcon(),
       freeH(w: 12),
     ],
   );
+}
+
+class SettingsIcon extends StatelessWidget {
+  const SettingsIcon({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton(
+        color: white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+        icon: const Icon(
+          Icons.settings,
+          size: 25,
+          color: white,
+        ),
+        onSelected: (value) {
+          if (value == 0) {
+            navigatorPush(context: context, neededPage: const QRCode());
+          }
+          if (value == 1) {
+            navigatorPush(context: context, neededPage: const Payments());
+          }
+          if (value == 2) {
+            navigatorPush(context: context, neededPage: const AddTransacton());
+          } else {
+            navigatorPush(context: context, neededPage: const AddCard());
+          }
+        },
+        itemBuilder: (context) => settingsPopUpMenuItems
+            .map((e) => PopupMenuItem(
+                value: e["id"],
+                child: Row(
+                  children: [
+                    Text(
+                      e["txt"] as String,
+                      style: getmedium(),
+                    )
+                  ],
+                )))
+            .toList());
+  }
+}
+
+class ItemsInPopUp extends StatelessWidget {
+  const ItemsInPopUp(
+      {Key? key,
+      required this.context,
+      required this.list,
+      required this.press})
+      : super(key: key);
+  final BuildContext context;
+  final List<Map<String, Object>> list;
+  final Function(Object val) press;
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton(
+        color: white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+        icon: const Icon(
+          Icons.keyboard_arrow_down_rounded,
+          color: blue3,
+        ),
+        onSelected: press,
+        itemBuilder: (context) => list
+            .map((e) => PopupMenuItem(
+                value: e["id"],
+                child: Row(
+                  children: [
+                    Text(
+                      e["txt"] as String,
+                      style: getmedium(),
+                    )
+                  ],
+                )))
+            .toList());
+  }
 }

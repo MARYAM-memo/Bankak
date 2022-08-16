@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
       drawer: const Drawer(),
       appBar: AppBar(elevation: 0, backgroundColor: blue2,
           //leading: const Icon(Icons.menu),
-          actions: [settings, freeH(w: 12)]),
+          actions: [SettingsIcon(), freeH(w: 12)]),
       body: SingleChildScrollView(
         child: Column(
           children: [

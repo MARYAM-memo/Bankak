@@ -5,3 +5,6 @@ String img4 = 'assets/images/p1.png';
 String img5 = 'assets/images/p2.png';
 String img6 = 'assets/images/phone.png';
 String img7 = 'assets/images/uoro.png';
+String img8 = 'assets/images/MONEY.png';
+String img9 = 'assets/images/ARROWS.png';
+String img10 = 'assets/images/card.png';

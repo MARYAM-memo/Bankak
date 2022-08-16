@@ -6,7 +6,7 @@ import 'modules/login.dart';
 
 void main() {
   //to prevent the orientaton in my app, to avoid the errors
- // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const MyApp());

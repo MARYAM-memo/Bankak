@@ -1,13 +1,20 @@
+import 'package:bankak_app/shared/components/consts.dart';
 import 'package:bankak_app/shared/components/shared_widgets.dart';
 import 'package:bankak_app/shared/resources/images.dart';
 import 'package:bankak_app/shared/resources/styles.dart';
 import 'package:flutter/material.dart';
-
 import '../shared/resources/colors.dart';
 
-class Transfer extends StatelessWidget {
+var coin = '\$';
+
+class Transfer extends StatefulWidget {
   const Transfer({Key? key}) : super(key: key);
 
+  @override
+  State<Transfer> createState() => _TransferState();
+}
+
+class _TransferState extends State<Transfer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +46,7 @@ class Transfer extends StatelessWidget {
                             textDirection: TextDirection.rtl,
                           ),
                         ],
-                      ), //21C4
+                      ),
                       Image.asset(
                         'assets/images/uoro.png',
                         height: 120,
@@ -54,7 +61,8 @@ class Transfer extends StatelessWidget {
                         children: [
                           Container(
                             height: 50,
-                            width: 60,
+                            width: 80,
+                            alignment: Alignment.center,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
                               border: Border.all(
@@ -62,18 +70,24 @@ class Transfer extends StatelessWidget {
                               ),
                             ),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
                                 Text(
-                                  '\$',
-                                  style: TextStyle(
+                                  coin,
+                                  style: const TextStyle(
                                       color: blue1,
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                Icon(
-                                  Icons.keyboard_arrow_down_rounded,
-                                )
+                                ItemsInPopUp(
+                                    context: context,
+                                    list: coinsPopUpMenuItems,
+                                    press: (val) {
+                                      setState(() {
+                                        coin = coinsPopUpMenuItems[val as int]
+                                            ['txt'] as String;
+                                      });
+                                    }),
                               ],
                             ),
                           ),
@@ -111,7 +125,8 @@ class Transfer extends StatelessWidget {
                         children: [
                           Container(
                             height: 50,
-                            width: 60,
+                            width: 80,
+                            alignment: Alignment.center,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
                               border: Border.all(
@@ -119,18 +134,24 @@ class Transfer extends StatelessWidget {
                               ),
                             ),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
                                 Text(
-                                  '€',
-                                  style: TextStyle(
+                                  coin,
+                                  style: const TextStyle(
                                       color: blue1,
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                Icon(
-                                  Icons.keyboard_arrow_down_rounded,
-                                )
+                                ItemsInPopUp(
+                                    press: (val) {
+                                      setState(() {
+                                        coin = coinsPopUpMenuItems[val as int]
+                                            ['txt'] as String;
+                                      });
+                                    },
+                                    context: context,
+                                    list: coinsPopUpMenuItems)
                               ],
                             ),
                           ),
