@@ -2,6 +2,8 @@ import 'package:bankak_app/shared/resources/colors.dart';
 import 'package:bankak_app/shared/resources/styles.dart';
 import 'package:flutter/material.dart';
 
+import 'shared_widgets.dart';
+
 var links = getlight(color: blue1, size: 13);
 List items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'del', 0, '.'];
 List paymentItemsCircles = [
@@ -104,3 +106,88 @@ List<Map<String, Object>> countryCodePopUpMenuItems = [
 ];
 
 String countryCode = '+44';
+
+List dataSlider = [
+  latestTransactionItem(
+      txt1: 'Lorem Ipsum Company',
+      txt2: 'Recieved payment',
+      money: "\$2,030.80"),
+  latestTransactionItem(
+      txt1: 'Auctor Elit Ltd', txt2: 'Transfer money', money: "-\$450.00"),
+  latestTransactionItem(
+      txt1: 'Lectus sit Amet est',
+      txt2: 'Gas & electicity payments',
+      money: "-\$259.00"),
+  latestTransactionItem(
+      txt1: 'Congue QuisQue', txt2: 'Withdraw money', money: "-\$1,500.00"),
+  latestTransactionItem(
+      txt1: 'Lorem Ipsum Company',
+      txt2: 'Recieved payment',
+      money: "\$2,030.80"),
+  latestTransactionItem(
+      txt1: 'Auctor Elit Ltd', txt2: 'Transfer money', money: "-\$450.00"),
+  latestTransactionItem(
+      txt1: 'Lectus sit Amet est',
+      txt2: 'Gas & electicity payments',
+      money: "-\$259.00"),
+  latestTransactionItem(
+      txt1: 'Congue QuisQue', txt2: 'Withdraw money', money: "-\$1,500.00"),
+  latestTransactionItem(
+      txt1: 'Lorem Ipsum Company',
+      txt2: 'Recieved payment',
+      money: "\$2,030.80"),
+  latestTransactionItem(
+      txt1: 'Auctor Elit Ltd', txt2: 'Transfer money', money: "-\$450.00"),
+  latestTransactionItem(
+      txt1: 'Lectus sit Amet est',
+      txt2: 'Gas & electicity payments',
+      money: "-\$259.00"),
+  latestTransactionItem(
+      txt1: 'Congue QuisQue', txt2: 'Withdraw money', money: "-\$1,500.00"),
+  latestTransactionItem(
+      txt1: 'Lorem Ipsum Company',
+      txt2: 'Recieved payment',
+      money: "\$2,030.80"),
+  latestTransactionItem(
+      txt1: 'Auctor Elit Ltd', txt2: 'Transfer money', money: "-\$450.00"),
+  latestTransactionItem(
+      txt1: 'Lectus sit Amet est',
+      txt2: 'Gas & electicity payments',
+      money: "-\$259.00"),
+  latestTransactionItem(
+      txt1: 'Congue QuisQue', txt2: 'Withdraw money', money: "-\$1,500.00"),
+  latestTransactionItem(
+      txt1: 'Lorem Ipsum Company',
+      txt2: 'Recieved payment',
+      money: "\$2,030.80"),
+  latestTransactionItem(
+      txt1: 'Auctor Elit Ltd', txt2: 'Transfer money', money: "-\$450.00"),
+  latestTransactionItem(
+      txt1: 'Lectus sit Amet est',
+      txt2: 'Gas & electicity payments',
+      money: "-\$259.00"),
+  latestTransactionItem(
+      txt1: 'Congue QuisQue', txt2: 'Withdraw money', money: "-\$1,500.00"),
+  latestTransactionItem(
+      txt1: 'Lorem Ipsum Company',
+      txt2: 'Recieved payment',
+      money: "\$2,030.80"),
+  latestTransactionItem(
+      txt1: 'Auctor Elit Ltd', txt2: 'Transfer money', money: "-\$450.00"),
+  latestTransactionItem(
+      txt1: 'Lectus sit Amet est',
+      txt2: 'Gas & electicity payments',
+      money: "-\$259.00"),
+  latestTransactionItem(
+      txt1: 'Congue QuisQue', txt2: 'Withdraw money', money: "-\$1,500.00"),
+  latestTransactionItem(
+      txt1: 'Lorem Ipsum Company',
+      txt2: 'Recieved payment',
+      money: "\$2,030.80"),
+  latestTransactionItem(
+      txt1: 'Auctor Elit Ltd', txt2: 'Transfer money', money: "-\$450.00"),
+  latestTransactionItem(
+      txt1: 'Lectus sit Amet est',
+      txt2: 'Gas & electicity payments',
+      money: "-\$259.00"),
+];

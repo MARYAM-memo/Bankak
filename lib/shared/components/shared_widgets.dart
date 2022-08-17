@@ -282,10 +282,14 @@ Widget transactionsHeader(color, txt) {
   );
 }
 
-Widget activeTransactionHeader(txt) {
-  return transactionsHeader(blue1, txt);
+Widget activeTransactionHeader(txt,{tap}) {
+  return InkWell(
+    onTap: tap,
+    child: transactionsHeader(blue1, txt));
 }
 
-Widget nonActiveTransactionHeader(txt) {
-  return transactionsHeader(gry.withOpacity(.5), txt);
+Widget nonActiveTransactionHeader(txt,{tap}) {
+  return InkWell(
+    onTap: tap,
+    child: transactionsHeader(gry.withOpacity(.5), txt));
 }

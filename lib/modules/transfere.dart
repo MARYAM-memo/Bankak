@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../shared/resources/colors.dart';
 
 var coin = '\$';
+var coinT = '€';
 
 class Transfer extends StatefulWidget {
   const Transfer({Key? key}) : super(key: key);
@@ -56,61 +57,12 @@ class _TransferState extends State<Transfer> {
                 SizedBox(
                   child: Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 50,
-                            width: 80,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              border: Border.all(
-                                color: Colors.grey,
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  coin,
-                                  style: const TextStyle(
-                                      color: blue1,
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                ItemsInPopUp(
-                                    context: context,
-                                    list: coinsPopUpMenuItems,
-                                    press: (val) {
-                                      setState(() {
-                                        coin = coinsPopUpMenuItems[val as int]
-                                            ['txt'] as String;
-                                      });
-                                    }),
-                              ],
-                            ),
-                          ),
-                          freeH(w: 10),
-                          SizedBox(
-                            height: 50,
-                            width: MediaQuery.of(context).size.width * .55,
-                            child: TextFormField(
-                              readOnly: true,
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                hintText: '1,000.00',
-                                hintStyle: const TextStyle(
-                                    color: blue1,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(4)),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      transferFields('780.00', (val) {
+                        setState(() {
+                          coin =
+                              coinsPopUpMenuItems[val as int]['txt'] as String;
+                        });
+                      }, coin),
                       freeV(),
                       const Text(
                         'To',
@@ -120,61 +72,12 @@ class _TransferState extends State<Transfer> {
                             fontWeight: FontWeight.bold),
                       ),
                       freeV(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 50,
-                            width: 80,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              border: Border.all(
-                                color: Colors.grey,
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  coin,
-                                  style: const TextStyle(
-                                      color: blue1,
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                ItemsInPopUp(
-                                    press: (val) {
-                                      setState(() {
-                                        coin = coinsPopUpMenuItems[val as int]
-                                            ['txt'] as String;
-                                      });
-                                    },
-                                    context: context,
-                                    list: coinsPopUpMenuItems)
-                              ],
-                            ),
-                          ),
-                          freeH(w: 10),
-                          SizedBox(
-                            height: 50,
-                            width: MediaQuery.of(context).size.width * .55,
-                            child: TextFormField(
-                              readOnly: true,
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                hintText: '780.00',
-                                hintStyle: const TextStyle(
-                                    color: blue1,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(4)),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      transferFields('1,000.00', (val) {
+                        setState(() {
+                          coinT =
+                              coinsPopUpMenuItems[val as int]['txt'] as String;
+                        });
+                      }, coinT),
                       freeV(h: 60),
                       SizedBox(
                         //to control design of gridview in case of rotating phone
@@ -194,15 +97,6 @@ class _TransferState extends State<Transfer> {
                                       ? 1.8
                                       : 0.3,
                               physics: const AlwaysScrollableScrollPhysics(),
-                              /* gridDelegate:
-                                  SliverGridDelegateWithMaxCrossAxisExtent(
-                                      maxCrossAxisExtent:
-                                          orientation == Orientation.portrait
-                                              ? 150
-                                              : 500,
-                                      crossAxisSpacing: 8,
-                                      mainAxisSpacing: 8,
-                                      childAspectRatio: 1.5), */
                               children: [
                                 for (int i = 0; i < items.length; i++)
                                   numberkeyboardButtons(items[i]),
@@ -220,6 +114,48 @@ class _TransferState extends State<Transfer> {
         ),
       ),
     );
+  }
+
+  Widget transferFields(txt, press, coin) {
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Container(
+          height: 50,
+          width: 80,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4),
+            border: Border.all(
+              color: Colors.grey,
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                coin,
+                style: const TextStyle(
+                    color: blue1, fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              ItemsInPopUp(
+                  press: press, context: context, list: coinsPopUpMenuItems)
+            ],
+          )),
+      freeH(w: 10),
+      SizedBox(
+        height: 50,
+        width: MediaQuery.of(context).size.width * .55,
+        child: TextFormField(
+          readOnly: true,
+          keyboardType: TextInputType.number,
+          decoration: InputDecoration(
+            hintText: txt,
+            hintStyle: const TextStyle(
+                color: blue1, fontWeight: FontWeight.bold, fontSize: 20),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(4)),
+          ),
+        ),
+      ),
+    ]);
   }
 }
 

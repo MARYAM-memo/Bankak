@@ -1,4 +1,4 @@
-import 'package:bankak_app/modules/transactions.dart';
+import 'package:bankak_app/modules/transactons/transactions.dart';
 import 'package:bankak_app/shared/components/consts.dart';
 import 'package:bankak_app/shared/components/shared_widgets.dart';
 import 'package:bankak_app/shared/resources/colors.dart';
