@@ -95,48 +95,50 @@ class _TransactonsState extends State<Transactons> {
           ],
         ),
       ),
-      bottomSheet: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: SizedBox(
-            child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            //left arrow
-            IconButton(
-                onPressed: () {
-                  controller.animateToPage(toPrevious(),
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.bounceInOut);
-                },
-                icon: Icon(
-                  leftarrow,
-                  color: blue3,
-                  size: 40,
-                )),
-            Row(
-              children: [
-                for (int i = 0; i < dataOfSlides.length; i++)
-                  Padding(
-                    padding: const EdgeInsets.all(2),
-                    child: points(i),
-                  )
-              ],
-            ),
-            //right arrow
-            IconButton(
-                onPressed: () {
-                  controller.animateToPage(toNext(),
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.bounceInOut);
-                },
-                icon: Icon(
-                  rightarrow,
-                  color: blue3,
-                  size: 40,
-                )),
-          ],
-        )),
-      ),
+      bottomSheet: current == 0
+          ? Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: SizedBox(
+                  child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  //left arrow
+                  IconButton(
+                      onPressed: () {
+                        controller.animateToPage(toPrevious(),
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.bounceInOut);
+                      },
+                      icon: Icon(
+                        leftarrow,
+                        color: blue3,
+                        size: 40,
+                      )),
+                  Row(
+                    children: [
+                      for (int i = 0; i < dataOfSlides.length; i++)
+                        Padding(
+                          padding: const EdgeInsets.all(2),
+                          child: points(i),
+                        )
+                    ],
+                  ),
+                  //right arrow
+                  IconButton(
+                      onPressed: () {
+                        controller.animateToPage(toNext(),
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.bounceInOut);
+                      },
+                      icon: Icon(
+                        rightarrow,
+                        color: blue3,
+                        size: 40,
+                      )),
+                ],
+              )),
+            )
+          : SizedBox(),
     );
   }
 
