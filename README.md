@@ -24,4 +24,5 @@ app's photos
 ![transactions](https://user-images.githubusercontent.com/93387228/185058726-0a002c7b-aee9-40a8-ab34-f8d21daac766.png)
 ![transaction1](https://user-images.githubusercontent.com/93387228/185058710-56674f71-24de-4a99-9ad7-85e7e76e7478.png)
 ![transactions2](https://user-images.githubusercontent.com/93387228/185058730-5f973dac-f1ce-47c9-ac0e-1d48c8c3c47d.png)
-![transactions33](https://user-images.githubusercontent.com/93387228/185058741-e1f2b2f1-b195-4e37-924f-106dfa99673b.png)
+![Screenshot_1660709839](https://user-images.githubusercontent.com/93387228/185059542-1f27c83a-c17c-4c87-9b74-87bc32edc4bc.png)
+
